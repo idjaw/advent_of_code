@@ -2,7 +2,10 @@ from textwrap import dedent
 from unittest import TestCase
 from unittest.mock import patch, mock_open
 
-from day_four.part_one import get_data, get_most_common, sum_of_valid_sector_ids
+from day_four.part_one_and_two import get_data, get_most_common,\
+    sum_of_valid_sector_ids
+
+from day_four.part_one_and_two import shift_cipher
 
 mock_inputs = """
 vxupkizork-sgmtkzoi-pkrrehkgt-zxgototm-644[kotgr]
@@ -53,3 +56,10 @@ class TestDecoding(TestCase):
     @patch('builtins.open', mock_open(read_data=mock_data))
     def test_1(self):
         self.assertEqual(sum_of_valid_sector_ids('meh'), 1514)
+
+
+class TestShiftCipher(TestCase):
+    def test_works(self):
+        self.assertEqual(
+            shift_cipher('qzmtzixmtkozyivhz', 343), "veryencryptedname"
+        )
