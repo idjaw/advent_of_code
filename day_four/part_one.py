@@ -26,9 +26,7 @@ def sum_of_valid_sector_ids(filename):
     data = get_data('inputs.txt')
     valid_sectors = 0
     for name, sector_id, checksum in data:
-        most_common = get_most_common(name)
-        if most_common == checksum:
-            valid_sectors += sector_id
+        valid_sectors += sector_id if get_most_common(name) == checksum else 0
     return valid_sectors
 
 
