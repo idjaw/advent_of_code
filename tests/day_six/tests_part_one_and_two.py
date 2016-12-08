@@ -25,6 +25,10 @@ enarar
 
 class TestGetCode(TestCase):
     @patch('builtins.open', mock_open(read_data=data))
-    def test_get_code(self):
+    def test_get_code_for_highest(self):
         self.assertEqual("easter", get_code('some_input'))
+
+    @patch('builtins.open', mock_open(read_data=data))
+    def test_get_code_for_lowest(self):
+        self.assertEqual("advent", get_code('some_input', False))
 
