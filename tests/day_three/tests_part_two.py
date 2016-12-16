@@ -1,3 +1,4 @@
+from textwrap import dedent
 from unittest import TestCase
 from unittest.mock import patch, mock_open
 
@@ -5,14 +6,12 @@ from day_three.part_two import get_data
 
 
 class TestGetData(TestCase):
-    mock_inputs = """
-  775  785  361
+    mock_inputs = dedent("""775  785  361
   622  375  125
   275  485  661
   422  575  145
   945  785  391
-  122  975  105
-"""
+  122  975  105""")
 
     @patch('builtins.open', mock_open(read_data=mock_inputs))
     def test_get_data(self):
